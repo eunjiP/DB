@@ -1,0 +1,7 @@
+.nav_bar>ul>li*5	=>자동으로 클라스 nav_bar에 ul만들고 그안에 li다섯개 생성
+Lorem : 아무의미 없는 문자넣어줌
+구글 검색에 emmet명령어 치면 단축키 알 수 있다!!!!!!!!!
+
+ctrl + shift + p누르고 >지우고 json입력
+아래 추가
+"php.debug.executablePath": "C:\\php8\\php.exe"

@@ -39,21 +39,21 @@
 	   *****
         -->
         <?php
-        $space = "&nbsp;&nbsp;"; // 빈공간 만들어주기
+        $space = "&nbsp;&nbsp;"; // html 문법 빈공간 만들어주기
         $coin = "<i class=\"fa-solid fa-coins\"></i>"; // 돈
        for($i=0; $i < $num; $i++)
-	{
-        print "<div>";
-        for($s=$num-($i+1);$s>0;$s--)
         {
-            print $space;
+            print "<div>";
+            for($s=$num-($i+1);$s>0;$s--)   //for($s=$num;$s>$i;$s--)로 하면 훨씬 쉽다
+            {
+                print $space;
+            }
+            for($j=0;$j<=$i;$j++)
+            {
+                print $coin;
+            }
+        print "</div>";
         }
-        for($j=0;$j<=$i;$j++)
-		{
-            print $coin;
-        }
-       print "</div>";
-	}
         ?>
     </div>
 </body>

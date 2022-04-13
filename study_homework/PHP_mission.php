@@ -76,7 +76,7 @@
     //문제8. 현재 시간이 20시 이전이면 "Have a good day!" 출력 
     $hour = rand(1, 24);
     print "현재 시간은 : " . $hour . "입니다.<br>";
-    if($hour <= 20)
+    if($hour < 20)      //20시 이전이면 20시는 포함 안됨!!
     {
         print "Have a good day!";
     }
