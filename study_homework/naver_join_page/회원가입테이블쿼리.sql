@@ -2,11 +2,7 @@
 
 CREATE TABLE n_join (
 	user_id varCHAR(20) PRIMARY KEY,
-	user_pw varCHAR(20) NOT NULL
-);
-
-CREATE TABLE user_infor (
-	user_id varCHAR(20) PRIMARY KEY,
+	user_pw varCHAR(20) NOT NULL,
 	user_name varCHAR(10) NOT NULL,
 	b_year INT UNSIGNED NOT NULL,
 	b_month INT UNSIGNED NOT NULL,
