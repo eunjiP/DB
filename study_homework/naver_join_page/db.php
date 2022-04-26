@@ -24,7 +24,7 @@
         $sql = "INSERT INTO n_join
             (user_id, user_pw, user_name, d_year, d_month, d_day, gender, email, hp)
             VALUES
-            ('$user_id', '$user_pw', '$user_name', '$d_year', '$d_month', '$d_day', '$gender', '$email', $hp)";
+            ('$user_id', '$user_pw', '$user_name', '$d_year', '$d_month', '$d_day', '$gender', '$email', '$hp')";
 
         $result = mysqli_query($conn, $sql);
         return $result;

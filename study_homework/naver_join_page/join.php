@@ -20,20 +20,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>회원가입</title>
     <style>
-        * {box-sizing: border-box; padding: 0; margin: 0;}
-        .container {display: grid; grid-template-rows: 200px 1fr;}
+        * {box-sizing: border-box; padding: 0; margin: 0;margin-bottom: 10px;}
+        .container {display: grid; grid-template-rows: 200px 1fr; }
         .container > header {display: flex; justify-content: center;}
         img { height: 200px;}
         main {display: flex; justify-content: center;}
-        .size {width: 400px; height: 50px;}
-        .ymd {width: 130px; height: 50px;}
-        #button {width: 400px; height: 50px;}
+        .size {width: 400px; height: 40px;}
+        .ymd {width: 130px; height: 40px;}
+        #red {color:red; text-align: center; font-weight: bolder;}
+        #button { width: 400px; height: 40px; margin-top: 20px; 
+            background-color: greenyellow; color: #fff;
+            font-weight: bold; cursor: pointer;}
+        #button:hover { background-color: green;}
     </style>
 </head>
 <body>
     <div class="container">
         <header>
-            <div id="logo"><a href="https://www.naver.com"><img src="img/logo.gif"></a></div>
+            <div id="logo"><a href="login.php"><img src="img/logo.gif"></a></div>
         </header>
         <main>
             <form action="join.php" method="post">
@@ -44,6 +48,8 @@
                     <input class="size" type="password" name="user_pw"></div>
                 <div>비밀번호 재확인<br>
                     <input class="size" type="password" name="user_repw"></div>
+                <div>이름<br>
+                    <input class="size" type="text" name="user_name"></div>
                 <div>생년월일<br>
                     <input class="ymd" type="text" name="d_year" placeholder="년(4자)">
                     <select class="ymd" name="d_month">
@@ -61,7 +67,7 @@
                         <option value="11">11</option>
                         <option value="12">12</option>
                     </select>
-                    <input class="ymd" type="text" name="d_year" placeholder="일">
+                    <input class="ymd" type="text" name="d_day" placeholder="일">
                 </div>
                 <div>성별<br>
                     <select class="size" name="gender">
@@ -77,29 +83,31 @@
                 <div>휴대전화<br>
                     <input class="size" type="text" name="hp">
                 </div>
+                <?php
+                    if($user_pw === $user_repw){
+                        if (!empty($_POST['user_pw'])) {
+                            $param = [
+                                "user_id" => $user_id,
+                                "user_pw" => $user_pw,
+                                "user_name" => $user_name,
+                                "d_year" => $d_year,
+                                "d_month" => $d_month,
+                                "d_day" => $d_day,
+                                "gender" => $gender,
+                                "email" => $email,
+                                "hp" => $hp,
+                            ];
+                            $result = ins_join($param);
+                            header("Location: login.php");
+                        }
+                    }
+                    elseif($user_pw !== $user_repw) {
+                        print "<div id='red'>입력하신 비밀번호가 다릅니다.</div>";
+                    }
+                ?>
                 <div><input id="button" type="submit" value="가입하기"></div>
             </form>
         </main>
     </div>
-    <?php
-            if($user_pw === $user_repw){
-                $param = [
-                    "user_id" => $user_id,
-                    "user_pw" => $user_pw,
-                    "user_name" => $user_name,
-                    "d_year" => $d_year,
-                    "d_month" => $d_month,
-                    "d_day" => $d_day,
-                    "gender" => $gender,
-                    "email" => $email,
-                    "hp" => $hp,
-                ];
-                $result = ins_join($param);
-                header("Location: login.php");
-            }
-            elseif($user_pw !== $user_repw) {
-                print "<div>입력하신 비밀번호가 다릅니다.</div>";
-            }
-        ?>
 </body>
 </html>
