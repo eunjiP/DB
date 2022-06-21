@@ -23,7 +23,7 @@
         $div = explode(",", $line);
         $str = "https://movie.naver.com/";
         ?>
-        <div><a href="<?=$str.$div[0]?>"><?=div[1]?></a></div>
+        <div><a href="<?=$str.$div[0]?>"><?=$div[1]?></a></div>
         <?php
     }
     fclose($files);
